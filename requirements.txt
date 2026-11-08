@@ -11,6 +11,7 @@ email-validator==2.2.0
 sqlalchemy==2.0.41
 alembic==1.15.2
 psycopg[binary]==3.2.4
+asyncpg==0.29.0
 redis==5.2.1
 python-dotenv==1.1.0
 
