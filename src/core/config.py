@@ -6,3 +6,6 @@ class Settings(BaseSettings):
     POSTGRES_PASSWORD: str
 
     model_config = SettingsConfigDict(env_file=".env", case_sensitive=True)
+
+
+settings = Settings()
