@@ -7,7 +7,7 @@ class SecurityUtil:
         password_bytes = password.encode("utf-8")
         if len(password_bytes) > 72:
             raise ValueError("Password must be at most 72 bytes")
-            return bcrypt.hashpw(password_bytes, bcrypt.gensalt(rounds=12)).decode(
+        return bcrypt.hashpw(password_bytes, bcrypt.gensalt(rounds=12)).decode(
                 "ascii"
             )
 
