@@ -1,4 +1,16 @@
 {
   "name": "logistics-tracker",
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y postgresql postgresql-contrib && sudo service postgresql start"
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "forwardPorts": [8000, 5432],
+  "portsAttributes": {
+    "8000": {
+      "label": "Logistics Tracker API"
+    },
+    "5432": {
+      "label": "PostgreSQL"
+    }
+  },
+  "postCreateCommand": "python -m pip install --user -r requirements-dev.txt"
 }
