@@ -2,6 +2,7 @@
 __pycache__/
 .env
 *.db
+*.sql
 .vscode
 .pytest_cache/
 .ruff_cache
