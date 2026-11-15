@@ -4,7 +4,7 @@ from typing import Any
 import bcrypt
 import jwt
 
-from src.core.config import settings
+from core.config import settings
 
 
 class SecurityUtil:

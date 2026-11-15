@@ -1,5 +1,6 @@
 import uvicorn
 from fastapi import FastAPI
+from api.v1.auth import auth_router
 
 app = FastAPI(
     title="FlashRoute Backend Engine",
@@ -7,6 +8,7 @@ app = FastAPI(
     version="0.1.0",
 )
 
+app.include_router(auth_router)
 
 @app.get("/api/v1/health", tags=["Infrastructure"])
 async def health_check():
@@ -17,4 +19,4 @@ async def health_check():
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", reload=True)
+    uvicorn.run("main:app", reload=True,host="0.0.0.0",port=8000)
