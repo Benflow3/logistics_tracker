@@ -1,5 +1,5 @@
 from pydantic import BaseModel,EmailStr
-from db.models import UserRole
+from src.db.models import UserRole
 from uuid import UUID
 
 class UserCreate(BaseModel):

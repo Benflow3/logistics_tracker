@@ -10,9 +10,25 @@ container is created.
 Start the API from the workspace:
 
 ```bash
-uvicorn main:app --app-dir src --reload --host 0.0.0.0
+uvicorn src.main:app --reload --host 0.0.0.0
 ```
 
 The API is available on port 8000, and PostgreSQL is available on port 5432.
 The development database credentials are `postgres` / `postgres`; do not use
 these credentials outside local development.
+
+## Tests
+
+Tests use the separate `TEST_DATABASE_URL` from `.env`. Its database name must
+contain `test` and must differ from `DATABASE_URL`. In the dev container, create
+the example database once with:
+
+```bash
+docker compose -f .devcontainer/docker-compose.yml exec postgres createdb -U postgres logistics_test_db
+```
+
+Then run the tests with:
+
+```bash
+python -m pytest
+```

@@ -4,7 +4,7 @@ from typing import Any
 import bcrypt
 import jwt
 
-from core.config import settings
+from src.core.config import settings
 
 
 class SecurityUtil:
@@ -23,15 +23,15 @@ class SecurityUtil:
         return bcrypt.checkpw(password_bytes, stored_hash.encode("ascii"))
 
     @staticmethod
-    def create_access_token(subject: Any, expire_delta: timedelta) -> str:
+    def create_access_token(subject: Any, expire_delta: int| None = None) -> str:
         if expire_delta:
             expire = datetime.now(UTC) + timedelta(expire_delta)
         else:
             expire = datetime.now(UTC) + timedelta(
-                settings.JWT_EXPIRE_TIME_IN_MINUTE
+               minutes= settings.JWT_EXPIRE_TIME_IN_MINUTE
             )
 
-        _to_encode = {"exp": expire, "sub": subject}
+        _to_encode = {"exp": expire, "sub": str(subject)}
         jwt_encode = jwt.encode(
             _to_encode, settings.JWT_SECRET, algorithm=settings.JWT_ALGORITHM
         )
